@@ -1,0 +1,27 @@
+import tkinter as tk
+from tkinter import ttk
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import sqlite3
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+# def fetch_data_from_db(query, db_path='Users/philipnj/Desktop/UofG DS/msc_DS/ProgSD/Project/register.db'):
+#     connection = sqlite3.connect(db_path)
+#     data = pd.read_sql_query("SELECT trip_duration FROM tripdetails", connection)
+#     connection.close()
+#     return data
+
+# query = "SELECT trip_duration FROM tripdetails"
+
+# data = fetch_data_from_db(query)
+
+
+with sqlite3.connect("/Users/philipnj/Desktop/UofG DS/msc_DS/ProgSD/Project/glidevolt-e-vehicle/register.db") as db:
+        cursor = db.cursor()
+        sql = "SELECT * FROM tripdetails"
+        cursor.execute(sql)
+        db.commit()
+        print(cursor.fetchall())

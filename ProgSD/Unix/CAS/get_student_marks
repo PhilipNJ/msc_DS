@@ -1,0 +1,10 @@
+# !/bin/bash
+
+
+header=$(head -n 1 "${2}_marks.csv")
+marks=$(grep "$1" "${2}_marks.csv" | cut -d ',' -f 2-)
+
+# Print the formatted output
+echo "$header"
+echo "$1,$marks"
+

@@ -1,0 +1,6 @@
+# !/bin/bash
+
+# echo 'You need to implement this bash script.'
+
+grep -i "$1\|$2\|$3" student_list.csv
+

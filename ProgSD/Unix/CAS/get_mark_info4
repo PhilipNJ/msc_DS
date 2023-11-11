@@ -1,0 +1,103 @@
+# !/bin/bash
+
+
+convert_percentage() {
+    local percentage="$1"
+    local band=""
+    local score=""
+
+    if (( percentage >= 91 && percentage <= 100 )); then
+        band="A1"
+        score=22
+    elif (( percentage >= 84 && percentage <= 90 )); then
+        band="A2"
+        score=21
+    elif (( percentage >= 78 && percentage <= 83 )); then
+        band="A3"
+        score=20
+    elif (( percentage >= 73 && percentage <= 77 )); then
+        band="A4"
+        score=19
+    elif (( percentage >= 70 && percentage <= 72 )); then
+        band="A5"
+        score=18
+    elif (( percentage >= 67 && percentage <= 69 )); then
+        band="B1"
+        score=17
+    elif (( percentage >= 63 && percentage <= 66 )); then
+        band="B2"
+        score=16
+    elif (( percentage >= 60 && percentage <= 62 )); then
+        band="B3"
+        score=15
+    elif (( percentage >= 57 && percentage <= 59 )); then
+        band="C1"
+        score=14
+    elif (( percentage >= 53 && percentage <= 56 )); then
+        band="C2"
+        score=13
+    elif (( percentage >= 50 && percentage <= 52 )); then
+        band="C3"
+        score=12
+    elif (( percentage >= 47 && percentage <= 49 )); then
+        band="D1"
+        score=11
+    elif (( percentage >= 43 && percentage <= 46 )); then
+        band="D2"
+        score=10
+    elif (( percentage >= 40 && percentage <= 42 )); then
+        band="D3"
+        score=9
+    elif (( percentage >= 37 && percentage <= 39 )); then
+        band="E1"
+        score=8
+    elif (( percentage >= 33 && percentage <= 36 )); then
+        band="E2"
+        score=7
+    elif (( percentage >= 30 && percentage <= 32 )); then
+        band="E3"
+        score=6
+    elif (( percentage >= 27 && percentage <= 29 )); then
+        band="F1"
+        score=5
+    elif (( percentage >= 23 && percentage <= 26 )); then
+        band="F2"
+        score=4
+    elif (( percentage >= 20 && percentage <= 22 )); then
+        band="F3"
+        score=3
+    elif (( percentage >= 15 && percentage <= 19 )); then
+        band="G1"
+        score=2
+    elif (( percentage >= 10 && percentage <= 14 )); then
+        band="G1"
+        score=1
+    else
+        band="H"
+        score=0
+    fi
+
+
+    echo "Band = $band"
+    echo "Score = $score"
+}
+
+header=$(head -n 1 "${2}_marks.csv" | cut -d ',' -f 2-)
+marks=$(grep "$1" "${2}_marks.csv" | cut -d ',' -f 2- )
+name=$(grep -i "$1" "student_list.csv" | cut -d ',' -f 1,2 | tr ',' ' ')
+weights=$(head -2 "${2}_marks.csv" | tail -1 | cut -d ',' -f 2-)
+
+IFS=',' read -ra header_array <<< "$header"
+IFS=',' read -ra marks_array <<< "$marks"
+IFS=',' read -ra weights_array <<< "$weights"
+
+echo "$name"
+echo "---"
+for (( i=0; i<${#header_array[@]}; i++)); do
+    echo "Name = ${header_array[i]}"
+    echo "Weight = ${weights_array[i]}"
+    echo "Mark = ${marks_array[i]}"
+    percentage="${marks_array[i]}"
+    convert_percentage "$percentage"
+    echo "---"
+done

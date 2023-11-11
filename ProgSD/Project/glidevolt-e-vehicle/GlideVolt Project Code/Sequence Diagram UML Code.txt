@@ -1,0 +1,168 @@
+@startuml
+actor User
+participant App
+participant "Local Host" as Server
+participant Database
+
+ 
+
+User -> App : Open rental app
+App -> User : Display login/register options
+User -> App : Select login/register
+App -> User : Display login/register form
+User -> App : Enter login/register details
+App -> Server : Send login/register request
+Server -> Database : Query user data
+Database --> Server : Return user data
+Server --> App : Return login/register status
+App -> User : Display login/register status
+App -> User : Enter trip details
+User -> App : Select pickup location and drop off location
+App -> Server : Request available vehicles
+Server -> Database : Query available vehicles
+Database --> Server : Return vehicle data
+Server --> App : Return available vehicles
+App -> User : Display available vehicles
+User -> App : Select vehicle
+App -> Server : Calculate estimated trip cost
+Server -> Database : Check wallet balance
+Database --> Server : Return wallet balance
+Server -> App : Return wallet balance
+alt Wallet balance is sufficient
+    App -> Server : Request vehicle rental
+    Server -> Database : Update vehicle status
+    Database --> Server : Confirmation
+    Server --> App : Rental confirmation
+    App -> User : Display rental confirmation
+else Wallet balance is insufficient
+    App -> User : Display "Top-up wallet balance" message
+    User -> App : Request to top up wallet
+    App -> Server : Request wallet top-up
+    Server -> Database : Update wallet balance
+    Database --> Server : Confirmation
+    Server --> App : Wallet top-up confirmation
+    App -> User : Display wallet top-up confirmation
+end
+User -> App : Start trip
+App -> Server :  Update vehicle status
+App -> Server :  Update trip status
+Server -> Database : Update vehicle status
+Database --> Server : Confirmation
+Server --> App : Rental and time confirmation
+App -> User : Display rental and time confirmation
+User -> App : End trip
+App -> Server : End trip
+Server -> Database : Update vehicle status
+Server -> Database : Update trip status
+Server -> Database : Update user wallet balance
+Database -> Server : Confirmation 
+Server -> App : Confirmation
+App -> User: Confirmation and give feedcack sheet
+User -> App: Save the feedback
+App -> Server: Save the feedback
+Server -> Database: Save the feedback
+Database --> Server : Confirmation
+Server --> App : Confirmation
+App -> User : Display confirmation and thank
+ 
+
+ 
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@startuml
+actor Operator
+participant App
+participant Server
+database Database
+
+Operator -> App: Track location of vehicles
+App -> Server: Request vehicle location
+Server -> Database: Query vehicle location
+Database --> Server: Vehicle location data
+Server --> App: Vehicle location data
+App --> Operator: Vehicle location data
+
+Operator -> App: Request to charge a vehicle
+App -> Server: Request to charge a vehicle
+Server -> Database: Update vehicle status (charging)
+Database --> Server: Vehicle status updated
+Server --> App: Vehicle status updated
+App --> Operator: Vehicle status updated
+
+Operator -> App: Request to repair a vehicle
+App -> Server: Request to repair a vehicle
+Server -> Database: Update vehicle status (under repair)
+Database --> Server: Vehicle status updated
+Server --> App: Vehicle status updated
+App --> Operator: Vehicle status updated
+
+Operator -> App: Request to move a vehicle
+App -> Server: Request to move a vehicle
+Server -> Database: Update vehicle location
+Database --> Server: Vehicle location updated
+Server --> App: Vehicle location updated
+App --> Operator: Vehicle location updated
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@startuml
+actor Manager
+participant App
+participant Server
+database Database
+participant PDFGenerator
+
+Manager -> App: Request report generation
+App -> Server: Request report data
+Server -> Database: Query database for activity data
+Database --> Server: Activity data
+Server --> App: Activity data
+App -> PDFGenerator: Generate PDF report
+PDFGenerator --> App: PDF report
+App --> Manager: Report data
+Manager -> App: Request download of PDF report
+App -> Server: Request PDF download
+Server -> PDFGenerator: Generate PDF download
+PDFGenerator --> Server: PDF download
+Server --> App: PDF download
+App --> Manager: PDF download
+
+@enduml

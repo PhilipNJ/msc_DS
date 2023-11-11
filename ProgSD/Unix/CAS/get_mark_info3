@@ -1,0 +1,19 @@
+# !/bin/bash
+
+header=$(head -n 1 "${2}_marks.csv" | cut -d ',' -f 2-)
+marks=$(grep "$1" "${2}_marks.csv" | cut -d ',' -f 2- )
+name=$(grep -i "$1" "student_list.csv" | cut -d ',' -f 1,2 | tr ',' ' ')
+weights=$(head -2 "${2}_marks.csv" | tail -1 | cut -d ',' -f 2-)
+
+IFS=',' read -ra header_array <<< "$header"
+IFS=',' read -ra marks_array <<< "$marks"
+IFS=',' read -ra weights_array <<< "$weights"
+
+echo "$name"
+echo "---"
+for (( i=0; i<${#header_array[@]}; i++)); do
+    echo "Name = ${header_array[i]}"
+    echo "Weight = ${weights_array[i]}"
+    echo "Mark = ${marks_array[i]}"
+    echo "---"
+done

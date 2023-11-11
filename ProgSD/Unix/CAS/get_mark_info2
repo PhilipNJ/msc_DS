@@ -1,0 +1,13 @@
+# !/bin/bash
+
+
+header=$(head -n 1 "${2}_marks.csv" | cut -d ',' -f 2-| tr ',' ' ')
+marks=$(grep "$1" "${2}_marks.csv" | cut -d ',' -f 2- | tr ',' ' ')
+name=$(grep -i "$1" "student_list.csv" | cut -d ',' -f 1,2 | tr ',' ' ')
+weights=$(head -2 "${2}_marks.csv" | tail -1 | cut -d ',' -f 2- | tr ',' ' ')
+
+# Print the formatted output
+echo "$name"
+echo "$header"
+echo "$weights"
+echo "$marks"

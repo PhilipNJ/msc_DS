@@ -1,0 +1,22 @@
+import sqlite3
+
+conn = sqlite3.connect('BookInfo.db')
+c = conn.cursor()
+
+# Ask user for an author's name
+author_name = input("Enter author's name: ")
+
+# Query the database and save results to Booklist.txt
+c.execute('''SELECT * FROM Books WHERE Author = ?''', (author_name,))
+books = c.fetchall()
+
+with open('Booklist.txt', 'w') as file:
+    file.write("This file contains the following record(s):\n")
+    for book in books:
+        file.write(f'{book[0]} - {book[1]} - {book[2]} - {book[3]}\n')
+
+# Display the content of the text file
+with open('Booklist.txt', 'r') as file:
+    print(file.read())
+
+conn.close()

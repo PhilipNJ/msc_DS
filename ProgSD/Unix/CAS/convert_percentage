@@ -1,0 +1,105 @@
+# !/bin/bash
+
+perc=$1
+
+case $perc in
+    0|1|2|3|4|5|6|7|8|9)
+        band="H"
+        score=0
+        ;;
+    10|11|12|13|14)
+        band="G2"
+        score=1
+        ;;
+    15|16|17|18|19)
+        band="G1"
+        score=2
+        ;;
+    20|21|22)
+        band="F3"
+        score=3
+        ;;
+    23|24|25|26)
+        band="F2"
+        score=4
+        ;;
+    27|28|29)
+        band="F1"
+        score=5
+        ;;
+    30|31|32)
+        band="E3"
+        score=6
+        ;;
+    33|34|35|36)
+        band="E2"
+        score=7
+        ;;
+    37|38|39)
+        band="E1"
+        score=8
+        ;;
+    40|41|42)
+        band="D3"
+        score=9
+        ;;
+    43|44|45|46)
+        band="D2"
+        score=10
+        ;;
+    47|48|49)
+        band="D1"
+        score=11
+        ;;
+    50|51|52)
+        band="C3"
+        score=12
+        ;;
+    53|54|55|56)
+        band="C2"
+        score=13
+        ;;
+    57|58|59)
+        band="C1"
+        score=14
+        ;;
+    60|61|62)
+        band="B3"
+        score=15
+        ;;
+    63|64|65|66)
+        band="B2"
+        score=16
+        ;;
+    67|68|69)
+        band="B1"
+        score=17
+        ;;
+    70|71|72)
+        band="A5"
+        score=18
+        ;;
+    73|74|75|76|77)
+        band="A4"
+        score=19
+        ;;
+    78|79|80|81|82|83)
+        band="A3"
+        score=20
+        ;;
+    84|85|86|87|88|89|90)
+        band="A2"
+        score=21
+        ;;
+    91|92|93|94|95|96|97|98|99|100)
+        band="A1"
+        score=22
+        ;;
+    *)
+        echo "Invalid percentage."
+        exit 1
+        ;;
+esac
+
+# Print
+echo "Band = $band, Score = $score"

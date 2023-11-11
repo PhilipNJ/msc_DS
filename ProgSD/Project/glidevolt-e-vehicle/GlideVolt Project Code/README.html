@@ -1,0 +1,132 @@
+
+		<head>
+			<style type="text/css" media="screen">
+				body,html{font-family:var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);font-size:var(--markdown-font-size,14px);padding:0 26px;line-height:var(--markdown-line-height,22px);word-wrap:break-word}body{padding-top:1em}h1,h2,h3,h4,h5,h6,ol,p,pre,ul{margin-top:0}h2,h3,h4,h5,h6{font-weight:400;margin-bottom:.2em}img{max-width:100%;max-height:100%}a{text-decoration:none}a:hover{text-decoration:underline}a:focus,input:focus,select:focus,textarea:focus{outline:1px solid -webkit-focus-ring-color;outline-offset:-1px}p{margin-bottom:.7em}ol,ul{margin-bottom:.7em}hr{border:0;height:2px;border-bottom:2px solid}h1{padding-bottom:.3em;line-height:1.2;border-bottom-width:1px;border-bottom-style:solid;font-weight:400}table{border-collapse:collapse}th{text-align:left;border-bottom:1px solid}td,th{padding:5px 10px}table>tbody>tr+tr>td{border-top:1px solid}blockquote{margin:0 7px 0 5px;padding:0 16px 0 10px;border-left-width:5px;border-left-style:solid}code{font-family:var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);font-size:1em;line-height:1.357em}body.wordWrap pre{white-space:pre-wrap}pre.hljs code>div,pre:not(.hljs){padding:16px;border-radius:3px;overflow:auto}pre code{color:var(--vscode-editor-foreground);tab-size:4}
+			</style>
+		</head>
+		<body>
+			<h1 id="glidevolt⚡">GlideVolt⚡</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Glidevolt is aimed at providing a platform for people to rent e-vehicles such as e-bikes and e-cycles. It also provides means of managing a vehicle fleet efficiently. This system helps in tracking, charging, repairing, and moving vehicles, catering to the needs of both operators and managers. Glidevolt provides a user-friendly interface to manage various tasks related to the fleet.</p>
+<hr>
+<h2 id="prerequisites">Prerequisites</h2>
+<h4 id="required-python-packages">Required python packages</h4>
+<pre><code class="language-bash">pip install customtkinter==5.2.0
+pip install matplotlib==3.8.0
+pip install pandas==1.5.3
+pip install Pillow==10.0.1
+pip install Pillow==10.1.0
+pip install seaborn==0.13.0
+pip install wordcloud==1.9.2
+pip install sqlite3
+pip install gc
+pip install tkinter
+pip install datetime
+pip install math
+pip install random
+</code></pre>
+<hr>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Copy the pip install commands from above and run them into Terminal 
+OR</li>
+<li>Navigate to the project directory using: <code>cd</code></li>
+<li>Install required packages: <code>pip install -r requirements.txt</code></li>
+</ol>
+<hr>
+<h2 id="usage">Usage</h2>
+<ol>
+<li>Run the <code>project_main.py</code> file: <code>python project_main.py</code></li>
+<li>Usage can be broadly categorised for an User as <strong>Customer perspective</strong>, <strong>Operator Perspective</strong> and <strong>Manager perspective</strong> which starts with the Login Page
+<img src="Screenshots/customerhomepage.png" alt="Alt text"></li>
+</ol>
+<h5 id="customer-perspective">Customer Perspective</h5>
+<ol>
+<li><p>Previously registered users can directly login while selecting <strong>Customer</strong> from dropdown. New users can register.
+<img src="Screenshots/register.png" alt="Alt text"></p>
+</li>
+<li><p>Customer can then select the trip start location and end location 
+<img src="Screenshots/customerhomepage.png" alt="Alt text"></p>
+<p> or topup their wallet using the <strong>Wallet</strong> Button.
+<img src="Screenshots/wallet.png" alt="Alt text"></p>
+</li>
+<li><p>Customer can select the type of vehicle which will be shown only if there is atleast one (Bike/Cycle) available at the chosen start location
+<img src="Screenshots/tripcal.png?" alt="Alt text"></p>
+</li>
+<li><p>Customer then starts the trip if the wallet minimum balance is greater than the trip estimate cost or else they can top it up.
+<img src="Screenshots/Insufficientbal.png" alt="Alt text">
+<img src="Screenshots/minbal.png" alt="Alt text"></p>
+</li>
+<li><p>Upon adding the required amount, the trip will start and show real-time cost and trip time
+<img src="Screenshots/endtripcal.png" alt="Alt text"></p>
+</li>
+<li><p>Once clicked on <strong>End Trip</strong>, Customer will be taken to another page where they can see the total cost of the trip
+<img src="/Screenshots/endtrip.png" alt="Alt text"></p>
+</li>
+<li><p>If the wallet doesnt have the required amount then the Customer will be asked to topup the required amount
+<img src="Screenshots/insufficientbal2.png" alt="Alt text"></p>
+</li>
+<li><p>At the end, the Customer will be taken to optional page called <strong>Feeback</strong>, where they can share their opinion regarding the trip and report issues (if any)
+<img src="Screenshots/feedback.png" alt="Alt text"></p>
+</li>
+</ol>
+<h5 id="operator-perspective">Operator Perspective</h5>
+<ol>
+<li><p>Operators can track, charge, repair, and move vehicles.</p>
+</li>
+<li><p>Upon Logging in, Operator will be given the above choices as Button and can perform actions that follows
+<img src="Screenshots/operatormain.png" alt="Alt text"></p>
+</li>
+<li><p><strong>Track Vehicle</strong> Button will let Operator track all the vehicles
+<img src="Screenshots/optrack.png?" alt="Alt text"></p>
+</li>
+<li><p><strong>Charge Vehicle</strong> Button will provide Operator with functionality to charge the vehicle. The user can select a vehicle from the dropdown and click &quot;Charge&quot; to charge it. Click &quot;x&quot; to go back to operator homepage.
+<img src="Screenshots/opcharge.png?" alt="Alt text"></p>
+</li>
+<li><p><strong>Repair Vehicle</strong> Button will provide Operator with functionality to repair the vehicle. The user can select a vehicle from the dropdown and click &quot;Repair&quot; to repair it. Click &quot;x&quot; to go back to operator homepage.
+<img src="Screenshots/oprepair.png" alt="Alt text"></p>
+</li>
+<li><p><strong>Move Vehicle</strong> Button will provide Operator with functionality to move the vehicle. The operator can select the type of vehicle, move from and move to values from the dropdowns and click on &quot;Move&quot; to move the vehicles. Click &quot;x&quot; to go back to operator homepage.
+<img src="Screenshots/opmove.png?" alt="Alt text"></p>
+</li>
+<li><p>Once they <strong>Logout</strong>, they will be redirected to the Login Page</p>
+</li>
+</ol>
+<h5 id="manager-perspective">Manager Perspective</h5>
+<ol>
+<li><p>Managers can generate various reports based on user interactions and system data.</p>
+</li>
+<li><p>Once they Login, they will be presented with a dropdown to select the type of report they want to view
+<img src="Screenshots/mmain.png" alt="Alt text"></p>
+</li>
+</ol>
+<ol start="3">
+<li>Upon clicking <strong>Generate Report</strong>, the report will open in a separate window. On this window, there are button to interact with the hyperparameters of the report. Click &quot;x&quot; to go back and eventually logout.
+<img src="Screenshots/mreport.png" alt="Alt text"></li>
+</ol>
+<hr>
+<h2 id="functionality">Functionality</h2>
+<h3 id="customer-page">Customer Page</h3>
+<ul>
+<li><strong>Register:</strong> Register as a user</li>
+<li><strong>Wallet:</strong> Use wallet functionality to add money for trip</li>
+<li><strong>Rent Vehicle:</strong> Rent Vehicle for trip (Bike/Cycle)</li>
+<li><strong>Feedback:</strong> Provide feedback for the trip</li>
+</ul>
+<h3 id="operator-page">Operator Page</h3>
+<ul>
+<li><strong>Track Vehicles:</strong> View details of available bikes and cycles.</li>
+<li><strong>Charge Vehicles:</strong> Charge vehicles and update their status.</li>
+<li><strong>Repair Vehicles:</strong> Initiate repairs for damaged vehicles.</li>
+<li><strong>Move Vehicles:</strong> Relocate vehicles to different locations.</li>
+</ul>
+<h3 id="manager-page">Manager Page</h3>
+<ul>
+<li><strong>Generate Reports:</strong> Choose from a list of reports to view insights about user interactions, vehicle statuses, and more.</li>
+</ul>
+<hr>
+<h2 id="contact">Contact</h2>
+<p>For any inquiries, please contact the project team at <a href="mailto:&#99;&#x6f;&#x6e;&#x74;&#x61;&#x63;&#116;&#x75;&#115;&#64;&#x67;&#108;&#105;&#100;&#x65;&#118;&#x6f;&#x6c;&#116;&#x2e;&#x63;&#x6f;&#x6d;">&#99;&#x6f;&#x6e;&#x74;&#x61;&#x63;&#116;&#x75;&#115;&#64;&#x67;&#108;&#105;&#100;&#x65;&#118;&#x6f;&#x6c;&#116;&#x2e;&#x63;&#x6f;&#x6d;</a>.</p>
+<hr>
+
+		</body>
